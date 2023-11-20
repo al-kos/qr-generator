@@ -130,8 +130,7 @@ overflow: hidden;
   }
 }
 
-.table tr, td{
-  /* width: 100%; */
+tr, td{
   border: 1px solid var(--mainBorderColor);
   text-align: center;
   padding: 5px 5px;
