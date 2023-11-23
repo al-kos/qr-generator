@@ -2,17 +2,12 @@ let imgBox = document.getElementById('imgBox')
 let qrImage = document.getElementById('qrImage')
 let qrText = document.getElementById('qrText')
 
-async function generateQR() {
+function generateQR() {
   if (qrText.value.length > 0) {
-    let response = await fetch(
-      `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrText.value}`,
-    )
-    if (response.ok) {
-      qrImage.src = response.url
-      imgBox.classList.add('show-img')
-    } else {
-      alert('Ошибка HTTP: ' + response.status)
-    }
+    qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrText.value}`
+    qrImage.onload = () => console.log(`Изображение загружено`)
+    qrImage.onerror = () => console.log('Ошибка во время загрузки изображения')
+    imgBox.classList.add('show-img')
   } else {
     qrText.classList.add('error')
     setTimeout(() => {
